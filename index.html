@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Javascript</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+    integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous">
+  </script>
+  <!-- BOOTSWATCH -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/pulse/bootstrap.min.css">
+
+  <!-- ANIMATE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+  <link rel="stylesheet" href="index.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="icon.png">
+
+</head>
+
+<body>
+  
+  <!-- ADD TASK -->
+  <div class="container p-4">
+    <div class="card card-body mt-4 border-danger" style="text-align: center;">
+      <p class="heading">Student Information Center</p>
+
+    </div>
+    <br><Br>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card border border-success">
+          <div class="card-body">
+
+            <h1 class="h4"><i class="fa fa-user-graduate"></i>&nbsp;<b>Add Student Details</b></h1>
+            <br>
+            <form id="task-form">
+
+              <div class="form-group">
+
+
+                <div class="box" id="test">
+                  <div id="sam" class="inputBox">
+                    <input type="text" id="task-title" required onkeyup="this.setAttribute('value', this.value);"
+                      value="">
+                    <label>Full Name</label>
+                  </div>
+
+                  <div class="inputBox">
+                    <input type="text" id="task-description" required onkeyup="this.setAttribute('value', this.value);"
+                      value="">
+                    <label>Roll No</label>
+                  </div>
+                  <div class="inputBox">
+                    <input type="email" id="task-emailid" required onkeyup="this.setAttribute('value', this.value);"
+                      value="">
+                    <label>Email ID</label>
+                  </div>
+
+                  <div class="form-group" style="font-size: large;">
+
+                    <label>Gender:&nbsp;</label>
+
+                    <label class="radio-inline">
+                      <input type="radio" id="task-gender" value="Male" name="optradio">&nbsp;Male
+                    </label>&nbsp;
+                    <label class="radio-inline">
+                      <input type="radio" id="task-gender" Value="Female" name="optradio">&nbsp;Female
+                    </label>&nbsp;
+                    <label class="radio-inline">
+                      <input type="radio" id="task-gender" Valeu="Other" name="optradio">&nbsp;Other
+                    </label>
+                  </div>
+
+                  <div class="inputBox">
+                    <input type="number" maxlength="10" id="task-contact" required
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      value="">
+                    <label>Contact</label>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;
+                      <div class="inputBox">
+                        <input type="number" class="col-md-15" id="task-age" required
+                          onkeyup="this.setAttribute('value', this.value);" value="">
+                        <label>Age</label>
+                      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <div class="inputBox">
+                        <input type="text" id="task-bg" class="col-md-15" required
+                          onkeyup="this.setAttribute('value', this.value);" value="">
+                        <label>Blood Group</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <input type="text" id="task-title" class="form-control" class="Task Title" placeholder="Task Title"
+                  autofocus>
+              </div>
+              <div class="form-group">
+                <textarea id="task-description" rows="3" class="form-control" placeholder="Task Description"></textarea>
+              </div> -->
+
+              </div>
+
+              <button class="btnn success" id="btn-task-form">
+                Save
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Tasks List -->
+      <div class="col-md-6">
+        <div class="card card-body mt-2 border-warning" style="text-align: center;">
+          <h4>Student Details</h4>
+
+        </div>
+        <div id="tasks-container"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FIREBASE -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+  <script>
+
+  </script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDCL31T4QStQlXNtxBF7GHpZqljSRh_h-M",
+      authDomain: "db-console.firebaseapp.com",
+      projectId: "db-console",
+      storageBucket: "db-console.appspot.com",
+      messagingSenderId: "91281671272",
+      appId: "1:91281671272:web:f97ee0cd7f4ecc508ce7dd",
+      measurementId: "G-Q9H0D8RR9V"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- CUSTOM CODE -->
+  <script src="index.js"></script>
+
+</body>
+
+</html>

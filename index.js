@@ -10,12 +10,12 @@ let id = '';
 
 /**
  * Save a New Task in Firestore
- * @param {string} title the title of the Task
+ * @param {string} name the name of the Task
  * @param {string} description the description of the Task
  */
-const saveTask = (title, description, emailid, gender, contact, age, bg) =>
+const saveTask = (name, description, emailid, gender, contact, age, bg) =>
   db.collection("tasks").doc().set({
-    title,
+    name,
     description,
     emailid,
     gender,
@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h1 class="card-text"><i class="fa fa-user-graduate"></i>&nbsp;<b>Kishore D</b></h1>
+        <h1 class="card-text"><i class="fa fa-user-graduate"></i>&nbsp;<b>${task.name}</b></h1>
         <h5 class="card-text">
           <center>
             <h3 class="profilePage__rollNo">${task.description}</h3>
@@ -99,7 +99,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h1 class="card-text"><i class="fa fa-user-graduate"></i>&nbsp;<b>Kishore D</b></h1>
+        <h1 class="card-text"><i class="fa fa-user-graduate"></i>&nbsp;<b>${task.name}</b></h1>
         <h5 class="card-text">
           <center>
             <h3 class="profilePage__rollNo">${task.description}</h3>
@@ -150,7 +150,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
         try {
           const doc = await getTask(e.target.dataset.id);
           const task = doc.data();
-          taskForm["task-title"].value = task.title;
+          taskForm["task-name"].value = task.name;
           taskForm["task-description"].value = task.description;
           taskForm["task-emailid"].value = task.emailid;
           taskForm["task-gender"].value = task.gender;
@@ -174,7 +174,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 taskForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const title = taskForm["task-title"];
+  const name = taskForm["task-name"];
   const description = taskForm["task-description"];
   const emailid = taskForm["task-emailid"];
   const gender = taskForm["task-gender"];
@@ -185,7 +185,7 @@ taskForm.addEventListener("submit", async (e) => {
   try {
     if (!editStatus) {
       swal("Thank You!", "You data has been saved!", "success");
-      await saveTask(title.value, description.value, emailid.value, gender.value, contact.value, age.value, bg.value);
+      await saveTask(name.value, description.value, emailid.value, gender.value, contact.value, age.value, bg.value);
 
 
     } else {
@@ -194,7 +194,7 @@ taskForm.addEventListener("submit", async (e) => {
 
 
       await updateTask(id, {
-        title: title.value,
+        name: name.value,
         description: description.value,
         emailid: emailid.value,
         gender: gender.value,
@@ -211,7 +211,7 @@ taskForm.addEventListener("submit", async (e) => {
 
     taskForm.reset();
 
-    title.focus();
+    name.focus();
   } catch (error) {
     console.log(error);
   }
